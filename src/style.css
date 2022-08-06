@@ -24,13 +24,13 @@
   color: #2a2438;
 }
 .summer-container {
-    background-image: url(images/Summer.jpg); 
-    color: #2a2438;
+  background-image: url(images/Summer.jpg);
+  color: #2a2438;
 }
 
 .autumn-container {
-background-image: url(images/Autumn.jpg);
-color: #1d1716;
+  background-image: url(images/Autumn.jpg);
+  color: #1d1716;
 }
 
 .current-time-container {
@@ -50,12 +50,14 @@ color: #1d1716;
 ::placeholder {
   color: #38598b;
   font-style: italic;
+  opacity: 0.7;
 }
 
 .search-btn {
   width: 50px;
   border-radius: 5px;
   border: 2px solid #5c5470;
+  transition: all 0.5s ease-in-out;
 }
 
 .search-btn:hover {
