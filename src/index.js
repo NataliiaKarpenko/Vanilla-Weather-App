@@ -75,19 +75,72 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${a
 axios.get(apiUrl).then(displayTemperature);
 
 function changeBackgroundImage() {
-  let month = document.querySelector("#month");
-  if (month.innerHTML === "Aug") {
-    document.getElementById("container").style.backgroundImage =
-      "url('src/images/Summer.png')";
-  } else if (month.innerHTML === "Sep") {
-    document.getElementById("container").style.backgroundImage =
-      "url('src/images/Autumn.png')";
-  } else if (month.innerHTML === "Dec") {
-    document.getElementById("container").style.backgroundImage =
-      "url('src/images/Winter.png')";
-  } else {
-    document.getElementById("container").style.backgroundImage =
-      "url('src/images/Spring.png')";
+  let month = document.querySelector("#month").innerHTML;
+  switch (month) {
+    case "Dec":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Winter.png')";
+      break;
+    case "Jan":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Winter.png')";
+      break;
+    case "Feb":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Winter.png')";
+      break;
+    case "March":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Spring.png')";
+      break;
+    case "April":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Spring.png')";
+      break;
+    case "May":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Spring.png')";
+      break;
+    case "June":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Summer.png')";
+      break;
+    case "July":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Summer.png')";
+      break;
+    case "Aug":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Summer.png')";
+      break;
+    case "Sep":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Autumn.png')";
+      break;
+    case "Oct":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Autumn.png')";
+      break;
+    case "Nov":
+      document.getElementById("container").style.backgroundImage =
+        "url('src/images/Autumn.png')";
+      break;
   }
+    
+    
+
+  // if (month.innerHTML === "Aug") {
+  //   document.getElementById("container").style.backgroundImage =
+  //     "url('src/images/Summer.png')";
+  // } else if (month.innerHTML === "Sep") {
+  //   document.getElementById("container").style.backgroundImage =
+  //     "url('src/images/Autumn.png')";
+  // } else if (month.innerHTML === "Dec") {
+  //   document.getElementById("container").style.backgroundImage =
+  //     "url('src/images/Winter.png')";
+  // } else {
+  //   document.getElementById("container").style.backgroundImage =
+  //     "url('src/images/Spring.png')";
+  // }
 }
 changeBackgroundImage();
