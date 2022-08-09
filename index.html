@@ -24,11 +24,10 @@
   </head>
   <body>
     <div
-      class="container winter-container spring-container summer-container autumn-container"
-    >
+      class="container" id="container">
       <div class="row">
         <ul class="current-time-container">
-          <li id="date"></li>
+          <li><span id="day"></span>, <span id="date"></span> <span id="month">Feb</span>, <span id="year"></span></li>
           <li id="time"></li>
         </ul>
       </div>
@@ -46,19 +45,13 @@
       <div class="row current-weather-container">
         <h1>Kyiv</h1>
         <h2>
-          ☀️ <span id="current-temperature"></span
-          >° <span class="units">C | F</span>
+          ☀️ <span id="current-temperature"></span>°
+          <span class="units">C | F</span>
         </h2>
         <ul class="weather-properties">
-          <li>
-            Humidity: <em id="humidity"></em> <em>%</em>
-          </li>
-          <li>
-            Wind: <em id="wind"></em> <em>m/s</em>
-          </li>
-          <li id="weather-conditions">
-            Cloudy
-          </li>
+          <li>Humidity: <em id="humidity"></em> <em>%</em></li>
+          <li>Wind: <em id="wind"></em> <em>m/s</em></li>
+          <li id="weather-conditions">Cloudy</li>
         </ul>
       </div>
       <div class="row week-weather-container">
