@@ -49,13 +49,17 @@
           ☀️ <span id="current-temperature"></span
           >° <span class="units">C | F</span>
         </h2>
-        <p>
-          Humidity: <em>80%</em>
-          <br />
-          Wind: <em>5 m/s</em>
-          <br />
-          Cloudy
-        </p>
+        <ul class="weather-properties">
+          <li>
+            Humidity: <em id="humidity"></em> <em>%</em>
+          </li>
+          <li>
+            Wind: <em id="wind"></em> <em>m/s</em>
+          </li>
+          <li id="weather-conditions">
+            Cloudy
+          </li>
+        </ul>
       </div>
       <div class="row week-weather-container">
         <div class="col-4">Saturday</div>

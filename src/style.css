@@ -85,9 +85,10 @@ h2 {
   font-size: 18px;
 }
 
-p {
+.weather-properties {
   font-size: 18px;
   font-weight: 800;
+  list-style: none;
 }
 
 .week-weather-container {
