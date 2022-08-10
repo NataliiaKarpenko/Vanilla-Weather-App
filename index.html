@@ -32,18 +32,19 @@
         </ul>
       </div>
       <div class="row search-container">
-        <form>
+        <form id="search-form">
           <input
-            type="text"
+            type="search"
             placeholder="Enter a city"
             autofocus
             class="input-box"
+            id="city-input"
           />
           <input type="submit" value="🔎" class="search-btn" />
         </form>
       </div>
       <div class="row current-weather-container">
-        <h1>Kyiv</h1>
+        <h1 id="city"></h1>
         <h2>
           <img src="" alt="" id="icon"> <span id="current-temperature"></span>°
           <span class="units">C | F</span>
