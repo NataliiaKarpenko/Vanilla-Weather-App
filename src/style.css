@@ -2,7 +2,7 @@
   max-width: 300px;
   font-family: "Zilla Slab", serif;
   border: 3px solid #5c5470;
-  box-shadow: 1px 1px 3px 4px #352f44;
+  box-shadow: 1px 1px 3px 3px #352f44;
   border-radius: 20px;
   position: absolute;
   top: 50%;
@@ -12,6 +12,7 @@
   padding: 40px 10px;
   background-repeat: no-repeat;
   background-size: cover;
+  color: #2a2438;
 }
 
 .winter-container {
@@ -71,12 +72,14 @@
 
 h1 {
   font-weight: 900;
-  margin-bottom: 15px;
 }
 
 h2 {
   font-weight: 800;
-  margin-bottom: 15px;
+}
+
+h2 img {
+  width: 60px;
 }
 
 .units {

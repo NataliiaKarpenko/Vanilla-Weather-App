@@ -57,16 +57,28 @@ let currentTime = new Date();
 document.querySelector("#time").innerHTML = formatTime(currentTime);
 
 function displayTemperature(response) {
+  console.log(response.data);
   let currentTemp = document.querySelector("#current-temperature");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
+
   let currentHumidity = document.querySelector("#humidity");
-
   currentHumidity.innerHTML = response.data.main.humidity;
-  let currentWind = document.querySelector("#wind");
 
+  let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = response.data.wind.speed;
+
   let currentWeatherConditions = document.querySelector("#weather-conditions");
   currentWeatherConditions.innerHTML = response.data.weather[0].main;
+
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute(
+    "alt",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`
+  );
 }
 
 let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
@@ -126,21 +138,5 @@ function changeBackgroundImage() {
         "url('src/images/Autumn.png')";
       break;
   }
-    
-    
-
-  // if (month.innerHTML === "Aug") {
-  //   document.getElementById("container").style.backgroundImage =
-  //     "url('src/images/Summer.png')";
-  // } else if (month.innerHTML === "Sep") {
-  //   document.getElementById("container").style.backgroundImage =
-  //     "url('src/images/Autumn.png')";
-  // } else if (month.innerHTML === "Dec") {
-  //   document.getElementById("container").style.backgroundImage =
-  //     "url('src/images/Winter.png')";
-  // } else {
-  //   document.getElementById("container").style.backgroundImage =
-  //     "url('src/images/Spring.png')";
-  // }
 }
 changeBackgroundImage();
