@@ -1,5 +1,6 @@
 .container {
   max-width: 300px;
+  height: 550px;
   font-family: "Zilla Slab", serif;
   border: 3px solid #5c5470;
   box-shadow: 1px 1px 3px 3px #352f44;
@@ -86,6 +87,20 @@ h2 img {
   position: relative;
   top: -7px;
   font-size: 18px;
+}
+
+a {
+  color: #564879;
+  text-decoration: underline;
+ }
+.active-link {
+  color: #2a2438;
+  text-decoration: none; 
+}
+
+.active-link:hover {
+  cursor: default;
+  color: #2a2438;
 }
 
 .weather-properties {

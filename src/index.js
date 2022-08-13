@@ -58,7 +58,8 @@ document.querySelector("#time").innerHTML = formatTime(currentTime);
 
 function displayWeather(response) {
   let currentTemp = document.querySelector("#current-temperature");
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemp = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = celsiusTemp;
 
   let currentHumidity = document.querySelector("#humidity");
   currentHumidity.innerHTML = response.data.main.humidity;
@@ -139,4 +140,24 @@ function handleSubmit(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
+let celsiusTemp = null;
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5) + 32;
+  document.querySelector("#current-temperature").innerHTML = fahrenheitTemp;
+  celsiusUnit.classList.remove("active-link");
+  fahrenheitUnit.classList.add("active-link");
+
+}
+let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
+fahrenheitUnit.addEventListener("click", displayFahrenheitTemp);
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  document.querySelector("#current-temperature").innerHTML = celsiusTemp;
+  fahrenheitUnit.classList.remove("active-link");
+  celsiusUnit.classList.add("active-link");
+}
+let celsiusUnit = document.querySelector("#celsius-unit");
+celsiusUnit.addEventListener("click", displayCelsiusTemp);
