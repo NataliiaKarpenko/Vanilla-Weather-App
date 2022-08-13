@@ -57,7 +57,6 @@ let currentTime = new Date();
 document.querySelector("#time").innerHTML = formatTime(currentTime);
 
 function displayWeather(response) {
-  console.log(response.data);
   let currentTemp = document.querySelector("#current-temperature");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
 
@@ -84,53 +83,38 @@ function displayWeather(response) {
   city.innerHTML = response.data.name;
 }
 
+function showCurrentPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeather);
+}
+navigator.geolocation.getCurrentPosition(showCurrentPosition);
+
 function changeBackgroundImage() {
   let month = document.querySelector("#month").innerHTML;
   switch (month) {
     case "Dec":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Winter.png')";
-      break;
     case "Jan":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Winter.png')";
-      break;
     case "Feb":
       document.getElementById("container").style.backgroundImage =
         "url('src/images/Winter.png')";
       break;
     case "March":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Spring.png')";
-      break;
     case "April":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Spring.png')";
-      break;
     case "May":
       document.getElementById("container").style.backgroundImage =
         "url('src/images/Spring.png')";
       break;
     case "June":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Summer.png')";
-      break;
     case "July":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Summer.png')";
-      break;
     case "Aug":
       document.getElementById("container").style.backgroundImage =
         "url('src/images/Summer.png')";
       break;
     case "Sep":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Autumn.png')";
-      break;
     case "Oct":
-      document.getElementById("container").style.backgroundImage =
-        "url('src/images/Autumn.png')";
-      break;
     case "Nov":
       document.getElementById("container").style.backgroundImage =
         "url('src/images/Autumn.png')";
@@ -155,13 +139,4 @@ function handleSubmit(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-function showCurrentPosition(position) {
-  console.log(position)
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-   axios.get(apiUrl).then(displayWeather);
-}
 
-navigator.geolocation.getCurrentPosition(showCurrentPosition);
