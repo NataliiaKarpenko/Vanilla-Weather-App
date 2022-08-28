@@ -82,16 +82,42 @@ function displayWeather(response) {
 
   let city = document.querySelector("#city");
   city.innerHTML = response.data.name;
+  fahrenheitUnit.classList.remove("active-link");
+  celsiusUnit.classList.add("active-link");
 }
 
-function showCurrentPosition(position) {
+function search(city) {
+  let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayWeather);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  search(cityInput.value);
+}
+search("Kyiv");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+function searchCurrentPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
-navigator.geolocation.getCurrentPosition(showCurrentPosition);
+
+function showCurrentPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchCurrentPosition);
+}
+
+let geolocationBtn = document.querySelector("#geolocation-btn");
+geolocationBtn.addEventListener("click", showCurrentPosition);
 
 function changeBackgroundImage() {
   let month = document.querySelector("#month").innerHTML;
@@ -124,21 +150,9 @@ function changeBackgroundImage() {
 }
 changeBackgroundImage();
 
-function search(city) {
-  let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(displayWeather);
-}
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#city-input");
-  search(cityInput.value);
-}
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
 
 let celsiusTemp = null;
 
@@ -148,7 +162,6 @@ function displayFahrenheitTemp(event) {
   document.querySelector("#current-temperature").innerHTML = fahrenheitTemp;
   celsiusUnit.classList.remove("active-link");
   fahrenheitUnit.classList.add("active-link");
-
 }
 let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
 fahrenheitUnit.addEventListener("click", displayFahrenheitTemp);

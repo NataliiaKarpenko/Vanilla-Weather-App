@@ -23,15 +23,18 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div
-      class="container" id="container">
+    <div class="container" id="container">
       <div class="row">
         <ul class="current-time-container">
-          <li><span id="day"></span>, <span id="date"></span> <span id="month"></span>, <span id="year"></span></li>
+          <li>
+            <span id="day"></span>, <span id="date"></span>
+            <span id="month"></span>, <span id="year"></span>
+          </li>
           <li id="time"></li>
         </ul>
       </div>
       <div class="row search-container">
+        <!-- <div class="col-10"> -->
         <form id="search-form">
           <input
             type="search"
@@ -41,13 +44,18 @@
             id="city-input"
           />
           <input type="submit" value="🔎" class="search-btn" />
+          <button class="geolocation-btn" id="geolocation-btn">📍</button>
         </form>
       </div>
       <div class="row current-weather-container">
         <h1 id="city"></h1>
         <h2>
-          <img src="#" alt="" id="icon"> <span id="current-temperature"></span> °
-          <span class="units"><a href="#" id="celsius-unit" class="active-link">C</a> | <a href="#" id="fahrenheit-unit" class="active-link">F</a></span>
+          <img src="#" alt="" id="icon" />
+          <span id="current-temperature"></span> °
+          <span class="units"
+            ><a href="#" id="celsius-unit" class="active-link">C</a> |
+            <a href="#" id="fahrenheit-unit" class="active-link">F</a></span
+          >
         </h2>
         <ul class="weather-properties">
           <li>Humidity: <em id="humidity"></em> <em>%</em></li>
