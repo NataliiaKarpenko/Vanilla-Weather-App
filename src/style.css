@@ -1,6 +1,6 @@
 .container {
   max-width: 300px;
-  max-height: 550px;
+  max-height: 580px;
   font-family: "Zilla Slab", serif;
   border: 3px solid #5c5470;
   box-shadow: 1px 1px 3px 3px #352f44;
@@ -14,25 +14,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: #2a2438;
-}
-
-.winter-container {
-  background-image: url(images/Winter.jpg);
-  color: #2a2438;
-}
-
-.spring-container {
-  background-image: url(images/Spring.jpg);
-  color: #2a2438;
-}
-.summer-container {
-  background-image: url(images/Summer.jpg);
-  color: #2a2438;
-}
-
-.autumn-container {
-  background-image: url(images/Autumn.jpg);
-  color: #1d1716;
 }
 
 .current-time-container {
@@ -74,8 +55,6 @@
   color: #e7eaf6;
 }
 
-
-
 .geolocation-btn {
   background-color: #5c5470;
   color: #e7eaf6;
@@ -96,10 +75,6 @@ h1 {
 
 h2 {
   font-weight: 800;
-}
-
-h2 img {
-  width: 60px;
 }
 
 .units {
@@ -131,13 +106,16 @@ a {
 .five-day-forecast-container {
   font-weight: 700;
  padding-left: 25px;
- padding-right: 20px;
- 
 }
+
 .icon-row {
   text-align: center;
 }
-.forecast-row {
-text-align: right;
- 
+
+.temperature-row {
+padding-left: 30px;
+}
+
+.min-temp {
+  color: #5c5470;
 }

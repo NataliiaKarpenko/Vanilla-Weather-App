@@ -1,17 +1,15 @@
-function formatDay(now) {
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[now.getDay()];
-  return `${day}`;
-}
-let currentDay = new Date();
-document.querySelector("#day").innerHTML = formatDay(currentDay);
+let now = new Date();
 
-function formatDate(now) {
-  let date = now.getDate();
-  return `${date}`;
+function formatDayDate(currentDate) {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[currentDate.getDay()];
+  let date = currentDate.getDate();
+
+  return `${day}, ${date}`;
 }
-let currentDate = new Date();
-document.querySelector("#date").innerHTML = formatDate(currentDate);
+
+let dayDateElement = document.querySelector("#current-day-date");
+dayDateElement.innerHTML = formatDayDate(now);
 
 function formatMonth(now) {
   let months = [
@@ -29,6 +27,7 @@ function formatMonth(now) {
     "Dec",
   ];
   let month = months[now.getMonth()];
+
   return `${month}`;
 }
 
@@ -39,78 +38,65 @@ function formatYear(now) {
   let year = now.getFullYear();
   return `${year}`;
 }
+
 let currentYear = new Date();
 document.querySelector("#year").innerHTML = formatYear(currentYear);
 
-function formatTime(now) {
-  let hour = now.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
+function formatTime(currentDay) {
+  let hours = currentDay.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
-  let minutes = now.getMinutes();
+  let minutes = currentDay.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `Last updated at ${hour}:${minutes}`;
+
+  return `Last updated at ${hours}:${minutes}`;
 }
-let currentTime = new Date();
-document.querySelector("#time").innerHTML = formatTime(currentTime);
 
-// function formatDay(timestamp) {
-//   let date = new Date(timestamp * 1000);
-//   let day = date.getDay();
-//   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let timeElement = document.querySelector("#current-time");
+timeElement.innerHTML = formatTime(now);
 
-//   return days[day];
-// }
+function formatDayToCome(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-function displayForecast() {
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#five-day-forecast");
   let forecastHTML = `<div class="row five-day-forecast-container">`;
-  let days = ["Sun", "Mon", "Tue", "Fri", "Sat"];
-  days.forEach(function (day) {
-    
 
-    forecastHTML = forecastHTML +
-      `
-    <div class="col-4">${day}</div>
-    <div class="col-3 icon-row">s</div>
-    <div class="col-5 forecast-row">30/ 35 C°</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+    <div class="col-4">${formatDayToCome(forecastDay.dt)}</div>
+    <div class="col-3 icon-row"><img src="http://openweathermap.org/img/wn/${
+      forecastDay.weather[0].icon
+    }@2x.png" alt="" width="30"
+    /></div>
+    <div class="col-5 temperature-row"><span class="min-temp">${Math.round(
+      forecastDay.temp.min
+    )}</span>/ ${Math.round(forecastDay.temp.max)} C°</div>
     `;
-  })
+    }
+  });
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
-  // <div class="row week-weather-container">
-  //   <div class="col-4">Saturday</div>
-  //   <div class="col-3">⛅️</div>
-  //   <div class="col-5">30/ 20 C°</div>
-  // </div>
-  // <div class="row week-weather-container">
-  //   <div class="col-4">Saturday</div>
-  //   <div class="col-3">⛅️</div>
-  //   <div class="col-5">30/ 20 C°</div>
-  // </div>
-  // <div class="row week-weather-container">
-  //   <div class="col-4">Saturday</div>
-  //   <div class="col-3">⛅️</div>
-  //   <div class="col-5">30/ 20 C°</div>
-  // </div>
-  // <div class="row week-weather-container">
-  //   <div class="col-4">Saturday</div>
-  //   <div class="col-3">⛅️</div>
-  //   <div class="col-5">30/ 20 C°</div>
-  // </div>
-// }
-
-// function getForecast(coordinates) {
-//   console.log(coordinates)
-//   let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
-//   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-//   console.log(apiUrl)
-//   axios.get(apiUrl).then(displayForecast);
-// }
+function getForecast(coordinates) {
+  let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayWeather(response) {
   let currentTemp = document.querySelector("#current-temperature");
@@ -154,9 +140,9 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
+
   search(cityInput.value);
 }
-
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -204,8 +190,12 @@ function changeBackgroundImage() {
       document.getElementById("container").style.backgroundImage =
         "url('src/images/Autumn.png')";
       break;
+    default:
+      document.getElementById("container").style.backgroundColor = "white";
+      break;
   }
 }
+
 changeBackgroundImage();
 
 let celsiusTemp = null;
@@ -217,6 +207,7 @@ function displayFahrenheitTemp(event) {
   celsiusUnit.classList.remove("active-link");
   fahrenheitUnit.classList.add("active-link");
 }
+
 let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
 fahrenheitUnit.addEventListener("click", displayFahrenheitTemp);
 
@@ -226,8 +217,8 @@ function displayCelsiusTemp(event) {
   fahrenheitUnit.classList.remove("active-link");
   celsiusUnit.classList.add("active-link");
 }
+
 let celsiusUnit = document.querySelector("#celsius-unit");
 celsiusUnit.addEventListener("click", displayCelsiusTemp);
 
 search("Kyiv");
-displayForecast();
