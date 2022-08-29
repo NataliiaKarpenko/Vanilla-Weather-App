@@ -19,7 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/icomoon.css">
+    <link rel="stylesheet" href="src/icomoon.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
@@ -43,9 +43,13 @@
             autofocus
             class="input-box"
             id="city-input"
+            autocomplete="off"
           />
-          <input type="submit" value="🔎" class="search-btn" />
-          <button class="geolocation-btn" id="geolocation-btn"><span class="icon-location2"></span></button>
+          <button class="search-btn"><span class="icon-search"></span></button>
+          <!-- <input type="submit" value="🔎" class="search-btn" /> -->
+          <button class="geolocation-btn" id="geolocation-btn">
+            <span class="icon-location2"></span>
+          </button>
         </form>
       </div>
       <div class="row current-weather-container">
@@ -64,30 +68,32 @@
           <li id="weather-conditions">Cloudy</li>
         </ul>
       </div>
-      <div class="row week-weather-container">
-        <div class="col-4">Saturday</div>
-        <div class="col-3">⛅️</div>
-        <div class="col-5">30/ 20 C°</div>
-      </div>
-      <div class="row week-weather-container">
-        <div class="col-4">Saturday</div>
-        <div class="col-3">⛅️</div>
-        <div class="col-5">30/ 20 C°</div>
-      </div>
-      <div class="row week-weather-container">
-        <div class="col-4">Saturday</div>
-        <div class="col-3">⛅️</div>
-        <div class="col-5">30/ 20 C°</div>
-      </div>
-      <div class="row week-weather-container">
-        <div class="col-4">Saturday</div>
-        <div class="col-3">⛅️</div>
-        <div class="col-5">30/ 20 C°</div>
-      </div>
-      <div class="row week-weather-container">
-        <div class="col-4">Saturday</div>
-        <div class="col-3">⛅️</div>
-        <div class="col-5">30/ 20 C°</div>
+      <div id="five-day-forecast">
+        <!-- <div class="row five-day-forecast-container">
+          <div class="col-4">Saturday</div>
+          <div class="col-3">⛅️</div>
+          <div class="col-5">30/ 20 C°</div>
+        </div>
+        <div class="row week-weather-container">
+          <div class="col-4">Saturday</div>
+          <div class="col-3">⛅️</div>
+          <div class="col-5">30/ 20 C°</div>
+        </div>
+        <div class="row week-weather-container">
+          <div class="col-4">Saturday</div>
+          <div class="col-3">⛅️</div>
+          <div class="col-5">30/ 20 C°</div>
+        </div>
+        <div class="row week-weather-container">
+          <div class="col-4">Saturday</div>
+          <div class="col-3">⛅️</div>
+          <div class="col-5">30/ 20 C°</div>
+        </div>
+        <div class="row week-weather-container">
+          <div class="col-4">Saturday</div>
+          <div class="col-3">⛅️</div>
+          <div class="col-5">30/ 20 C°</div>
+        </div> -->
       </div>
     </div>
     <script src="src/index.js"></script>

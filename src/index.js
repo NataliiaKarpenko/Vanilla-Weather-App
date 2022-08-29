@@ -56,6 +56,62 @@ function formatTime(now) {
 let currentTime = new Date();
 document.querySelector("#time").innerHTML = formatTime(currentTime);
 
+// function formatDay(timestamp) {
+//   let date = new Date(timestamp * 1000);
+//   let day = date.getDay();
+//   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+//   return days[day];
+// }
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#five-day-forecast");
+  let forecastHTML = `<div class="row five-day-forecast-container">`;
+  let days = ["Sun", "Mon", "Tue", "Fri", "Sat"];
+  days.forEach(function (day) {
+    
+
+    forecastHTML = forecastHTML +
+      `
+    <div class="col-4">${day}</div>
+    <div class="col-3 icon-row">s</div>
+    <div class="col-5 forecast-row">30/ 35 C°</div>
+    `;
+  })
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+  // <div class="row week-weather-container">
+  //   <div class="col-4">Saturday</div>
+  //   <div class="col-3">⛅️</div>
+  //   <div class="col-5">30/ 20 C°</div>
+  // </div>
+  // <div class="row week-weather-container">
+  //   <div class="col-4">Saturday</div>
+  //   <div class="col-3">⛅️</div>
+  //   <div class="col-5">30/ 20 C°</div>
+  // </div>
+  // <div class="row week-weather-container">
+  //   <div class="col-4">Saturday</div>
+  //   <div class="col-3">⛅️</div>
+  //   <div class="col-5">30/ 20 C°</div>
+  // </div>
+  // <div class="row week-weather-container">
+  //   <div class="col-4">Saturday</div>
+  //   <div class="col-3">⛅️</div>
+  //   <div class="col-5">30/ 20 C°</div>
+  // </div>
+// }
+
+// function getForecast(coordinates) {
+//   console.log(coordinates)
+//   let apiKey = "8dcd9f739c97fb9e5152465931cf4ba4";
+//   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+//   console.log(apiUrl)
+//   axios.get(apiUrl).then(displayForecast);
+// }
+
 function displayWeather(response) {
   let currentTemp = document.querySelector("#current-temperature");
   celsiusTemp = Math.round(response.data.main.temp);
@@ -84,6 +140,8 @@ function displayWeather(response) {
   city.innerHTML = response.data.name;
   fahrenheitUnit.classList.remove("active-link");
   celsiusUnit.classList.add("active-link");
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -98,7 +156,7 @@ function handleSubmit(event) {
   let cityInput = document.querySelector("#city-input");
   search(cityInput.value);
 }
-search("Kyiv");
+
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -150,10 +208,6 @@ function changeBackgroundImage() {
 }
 changeBackgroundImage();
 
-
-
-
-
 let celsiusTemp = null;
 
 function displayFahrenheitTemp(event) {
@@ -174,3 +228,6 @@ function displayCelsiusTemp(event) {
 }
 let celsiusUnit = document.querySelector("#celsius-unit");
 celsiusUnit.addEventListener("click", displayCelsiusTemp);
+
+search("Kyiv");
+displayForecast();
