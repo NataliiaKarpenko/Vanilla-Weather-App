@@ -22,7 +22,6 @@
 }
 
 .search-container {
-
   margin-bottom: 30px;
 }
 
@@ -38,7 +37,7 @@
 }
 
 .search-btn,
-.geolocation-btn  {
+.geolocation-btn {
   width: 40px;
   border-radius: 5px;
   border: 2px solid #5c5470;
@@ -46,8 +45,8 @@
 }
 
 .search-btn {
- background-color: #e7eaf6;;
- color: #5c5470;
+  background-color: #e7eaf6;
+  color: #5c5470;
 }
 
 .search-btn:hover {
@@ -58,12 +57,12 @@
 .geolocation-btn {
   background-color: #5c5470;
   color: #e7eaf6;
- }
+}
 
- .geolocation-btn:hover {
-  background-color: #e7eaf6;;
+.geolocation-btn:hover {
+  background-color: #e7eaf6;
   color: #5c5470;
- }
+}
 
 .current-weather-container {
   text-align: center;
@@ -86,10 +85,10 @@ h2 {
 a {
   color: #5d507c;
   text-decoration: underline;
- }
+}
 .active-link {
   color: #2a2438;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .active-link:hover {
@@ -98,14 +97,15 @@ a {
 }
 
 .weather-properties {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   list-style: none;
 }
 
 .five-day-forecast-container {
-  font-weight: 700;
- padding-left: 25px;
+  font-size: 18px;
+  font-weight: 800;
+  padding-left: 25px;
 }
 
 .icon-row {
@@ -113,7 +113,7 @@ a {
 }
 
 .temperature-row {
-padding-left: 30px;
+  padding-left: 30px;
 }
 
 .min-temp {
